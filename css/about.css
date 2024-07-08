@@ -1,0 +1,457 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+    transition: all 0.2s linear;
+
+}
+
+:root {
+    --bg-color: #080808;
+    --second-bg-color: #151414;
+    --text-color: #fff;
+    --main-color: #01dcb2;
+
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-color);
+}
+
+nav {
+    background: var(--second-bg-color);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+nav ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav li {
+    height: 50px;
+}
+
+nav a {
+    height: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 20px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--main-color);
+    color: var(--main-color);
+}
+
+nav li:first-child {
+    margin-right: auto;
+}
+
+nav li:first-child:hover {
+    transform: scaleY(1.1);
+    text-shadow: 0 0 25px var(--main-color);
+}
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color: #131313cd;
+    backdrop-filter: blur(10px);
+
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.sidebar li{
+    width: 100%;
+}
+.sidebar a{
+    width: 100%;
+    font-size: 20px;
+}
+.menu-button{
+    display: none;
+}
+@media(max-width:1024px){
+    nav a{
+        font-size: 0.8rem;
+    }
+}
+
+@media(max-width:800px){
+    .hideOnMobile{
+        display: none;
+    }
+    .menu-button{
+        display: block;
+    }
+}
+@media(max-width:400px){
+    .sidebar{
+        width:100%;
+
+    }
+}
+
+.education {
+    padding: 25px 15px;
+    background-color: var(--bg-color);
+
+
+}
+
+.heading {
+    margin: 3rem 0 3rem;
+    position: relative;
+    background: repeating-conic-gradient(from var(--a), var(--main-color)0%, var(--main-color) 10%, transparent 10%, transparent 50%);
+    animation: animate 6s linear infinite;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    
+}
+
+.heading::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-conic-gradient(from var(--a), var(--main-color)0%, var(--main-color) 10%, transparent 10%, transparent 50%);
+    animation: animate 6s linear infinite;
+    animation-delay: -1.5s;
+
+}
+
+.heading::after {
+    content: '';
+
+    position: absolute;
+    inset: 2px;
+    border: 20px solid var(--bg-color);
+    background: var(--bg-color);
+}
+
+@property --a {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+
+}
+
+@keyframes animate {
+    0% {
+        --a: 0deg
+    }
+
+    100% {
+        --a: 360deg
+    }
+}
+
+.heading h2 {
+    padding: 10px;
+    color: var(--main-color);
+    z-index: 10;
+    position: relative;
+    font-size: 5rem;
+}
+
+
+.timeline-items {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+
+}
+
+.timeline-items::before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background: var(--main-color);
+    left: calc(50% - 1px);
+}
+
+.timeline-item {
+    margin-bottom: 40px;
+    width: 100%;
+    position: relative;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-item:nth-child(odd) {
+    padding-right: calc(50% + 30px);
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    padding-left: calc(50% + 30px);
+}
+
+.timeline-dot {
+    height: 21px;
+    width: 21px;
+    left: calc(50% - 8px);
+    background-color: var(--main-color);
+    box-shadow: 0 0 25px var(--main-color),
+        0 0 50px var(--main-color);
+    position: absolute;
+
+    border-radius: 50%;
+    top: 10px;
+
+
+}
+
+.timeline-date {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-color);
+    margin: 6px 0 15px;
+
+}
+
+.timeline-content {
+    background: var(--second-bg-color);
+    border: 3px solid var(--main-color);
+    padding: 30px 50px;
+    border-radius: 4rem;
+    box-shadow: 0 0 10px var(--main-color);
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.timeline-content:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--main-color);
+
+}
+
+.timeline-content h3 {
+    font-size: 20px;
+    color: var(--text-color);
+    margin: 0 0 10px;
+    font-weight: 500;
+}
+
+.timeline-content p {
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 22px;
+
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+    width: 5px;
+
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 35px;
+    margin-bottom: 25px;
+
+}
+
+.wrapper .carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 12px);
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: 0;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.wrapper {
+    max-width: 1100px;
+    width: 100%;
+    position: relative;
+}
+
+.comm i {
+    height: 50px;
+    width: 50px;
+    background-color: var(--main-color);
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    color: var(--text-color);
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.25rem;
+}
+
+.wrapper .wrap i:first-child {
+    left: -22px;
+}
+
+.wrapper .wraps i:first-child {
+    right: -22px;
+}
+
+@media screen and (max-width: 900px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 2) - 9px);
+
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .wrapper .carousel {
+        grid-auto-columns: 100%;
+
+    }
+}
+
+.carousel.dragging .card {
+    cursor: grab;
+    user-select: none;
+}
+
+.carousel .dragging {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+}
+
+.carousel .card {
+    scroll-snap-align: start;
+    height: 342px;
+    list-style: none;
+    background: var(--second-bg-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 25px auto 15px auto;
+    cursor: pointer;
+
+}
+
+.carousel :where(.card, .img) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.card .img {
+    background: var(--main-color);
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+
+}
+
+.card .img img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--second-bg-color);
+}
+
+.card h2 {
+    font-weight: 500;
+    font-size: 1.56rem;
+    margin: 30px 0 5px;
+    color: var(--main-color);
+
+}
+
+.card span {
+    color: var(--text-color);
+    font-size: 1.31rem;
+    margin-bottom: 25px;
+}
+
+.card .icons {
+    width: 100% !important;
+    display: flex;
+    justify-content: space-between;
+    font-size: 2.5rem;
+    color: var(--main-color);
+    background: var(--second-bg-color);
+}
+
+.card .icons i {
+    background: var(--second-bg-color);
+    color: var(--main-color);
+}
+
+.card .icons a {
+    background: var(--second-bg-color);
+    color: var(--second-bg-color);
+    padding: 0px 60px;
+}
+
+@media(max-width:991px) {
+    .heading h2 {
+        font-size: 50px;
+    }
+
+    .timeline-items::before {
+        left: 7px;
+    }
+
+    .timeline-item:nth-child(odd) {
+        padding-right: 0;
+        text-align: left;
+    }
+
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        padding-left: 37px !important;
+    }
+
+    .timeline-dot {
+        left: 0;
+    }
+}
